@@ -20,8 +20,23 @@ def checkStatus():
         outputfile.write(status + "\n")
     outputfile.close()
 
+def offLine():
+    df = pd.read_csv("C:/Users/ECY/Projects/serverOnline/output.csv", names=['IP', "Status"])
+
+    #print(df.head())
+    df_filtered = df[(df['Status']==0)]
+    print(df_filtered)
+
+    ip_address = df_filtered.iloc[:, :1]
+
+    print("Ip: " + ip_address ) 
+
+
+
+
 while True:
     checkStatus()
+    offLine()
     time.sleep(300)
 
 
